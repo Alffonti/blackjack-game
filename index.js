@@ -53,7 +53,7 @@ function getRandomCard() {
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
-    // rendering items on an array with a 'for' loop (consist of a start condition, finish condition and a step size) // the 'length' property on an array is one number larger than the final index of the array
+    // in order to render items on an array on the page I needed to use a 'for' loop (consist of a start condition, finish condition and a step size) // the 'length' property on an array is one number larger than the final index of the array
     for (let i = 0; i < cards.length; i++) {
         cardsEl.textContent += cards[i] + " "
     }
