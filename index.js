@@ -18,14 +18,14 @@ playerEl.textContent = player.name + ": $" + player.chips
 
 function getRandomCard() {
     // Math.random() generates a random number between 0 and 1 (not inclusive of 1) // Multiplying Math.random() by a number modify the range of the number generated // Math.floor() removes the decimals
-    let randomNumer = Math.floor( Math.random()*13 ) + 1 // 1-13
+    let randomNumber = Math.floor( Math.random()*13 ) + 1 // 1-13
     // special cases: the Ace card is just going to take 11 as a value (not 1) in this project ; J,Q,K cards takes a value of 10
-    if (randomNumer > 10) {
+    if (randomNumber > 10) {
         return 10
-    } else if (randomNumer === 1) {
+    } else if (randomNumber === 1) {
         return 11
     } else {
-        return randomNumer
+        return randomNumber
     }
 }
 
