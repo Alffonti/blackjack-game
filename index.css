@@ -1,0 +1,28 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url("images/table.png");
+    background-size: cover;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+h1{
+    color: goldenrod;
+}
+
+#message-el{
+    font-style: italic;
+}
+
+button{
+    width: 150px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 2px;
+    background: goldenrod;
+    color: #016f32;
+    font-weight: bold;
+    margin: 2px 0; /* The spacing between the two buttons is 4px (margin-bottom:2px of first button + margin-top:2px of second button ) */
+}
+
