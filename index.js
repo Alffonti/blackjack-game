@@ -1,5 +1,5 @@
 // state of the game before starting the game; // declaring variables and assigning its values to 0, false or an empty string. Later a new value will be reassigned depending on the state of the game.
-let player = {
+const player = {
     name: "Alph",
     chips: 145
 }
@@ -9,16 +9,38 @@ let hasBlackJack = false
 let isAlive = false
 let message = ""
 
-let messageEl = document.getElementById("message-el") // document.querySelector("#message-el")
-let sumEl = document.getElementById("sum-el") 
-let cardsEl = document.getElementById("cards-el")
-let playerEl = document.getElementById("player-el")
+const messageEl = document.getElementById("message-el") // document.querySelector("#message-el")
+const sumEl = document.getElementById("sum-el") 
+const cardsEl = document.getElementById("cards-el")
+const playerEl = document.getElementById("player-el")
+const startGameBtn = document.getElementById('start-game-btn');
+const newCardBtn = document.getElementById('new-card-btn');
 
 playerEl.textContent = player.name + ": $" + player.chips
 
+startGameBtn.addEventListener('click', function startGame() {
+    isAlive = true
+    const firstCard = getRandomCard()
+    const secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
+    renderGame() // The 'renderGame' function renders on the page the current state of the game
+})
+
+newCardBtn.addEventListener('click', function newCard() {
+    // console.log("Drawing a new card from the deck!")
+    // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
+    if (isAlive === true && hasBlackJack === false) {
+        let card = getRandomCard()
+        sum += card
+        cards.push(card)
+        renderGame()        
+    }
+})
+
 function getRandomCard() {
     // Math.random() generates a random number between 0 and 1 (not inclusive of 1) // Multiplying Math.random() by a number modify the range of the number generated // Math.floor() removes the decimals
-    let randomNumber = Math.floor( Math.random()*13 ) + 1 // 1-13
+    const randomNumber = Math.floor( Math.random()*13 ) + 1 // 1-13
     // special cases: the Ace card is just going to take 11 as a value (not 1) in this project ; J,Q,K cards takes a value of 10
     if (randomNumber > 10) {
         return 10
@@ -27,15 +49,6 @@ function getRandomCard() {
     } else {
         return randomNumber
     }
-}
-
-function startGame() {
-    isAlive = true
-    let firstCard = getRandomCard()
-    let secondCard = getRandomCard()
-    cards = [firstCard, secondCard]
-    sum = firstCard + secondCard
-    renderGame() // The 'renderGame' function reders the current state of the game
 }
 
 function renderGame() {
@@ -57,17 +70,4 @@ function renderGame() {
         isAlive = false
     }
     messageEl.textContent = message
-}
-
-
-function newCard() {
-    // console.log("Drawing a new card from the deck!")
-    // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
-    if (isAlive === true && hasBlackJack === false) {
-        let card = getRandomCard()
-        sum += card
-        cards.push(card)
-        renderGame()        
-    }
-
 }
